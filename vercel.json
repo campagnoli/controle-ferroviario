@@ -25,5 +25,6 @@
     }
   ],
   "installCommand": "pip install -r requirements.txt",
-  "buildCommand": "python -c \"import os, shutil; os.makedirs(\'src/static\', exist_ok=True); shutil.copytree(\'src/static\', \'src/static\', dirs_exist_ok=True)\""
+  "buildCommand": "buildCommand": "python -c \"import os, shutil; os.makedirs(\'src/static\', exist_ok=True); shutil.copytree(\'src/static\', \'src/static\', dirs_exist_ok=True)\""
+
 }
