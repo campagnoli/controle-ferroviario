@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle Ferroviário - Passagem de Serviço</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Status de Circulação - 12 horas</h1>
+        </header>
+
+        <!-- Informações do Turno -->
+        <section class="info-turno">
+            <div class="info-grid">
+                <div class="info-item">
+                    <label>AGENTE:</label>
+                    <input type="text" id="agente" placeholder="Nome do agente">
+                </div>
+                <div class="info-item">
+                    <label>DIA:</label>
+                    <input type="date" id="dia">
+                </div>
+                <div class="info-item">
+                    <label>FERIADO:</label>
+                    <select id="feriado">
+                        <option value="Não">Não</option>
+                        <option value="Sim">Sim</option>
+                    </select>
+                </div>
+                <div class="info-item">
+                    <label>TURNO:</label>
+                    <select id="turno">
+                        <option value="Dia">Dia</option>
+                        <option value="Manhã">Manhã</option>
+                        <option value="Tarde">Tarde</option>
+                        <option value="Noite">Noite</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tabela de Trens -->
+        <section class="tabela-trens">
+            <div class="table-container">
+                <table id="tabela-trens">
+                    <thead>
+                        <tr>
+                            <th>Nº</th>
+                            <th>TREM</th>
+                            <th>ORIG</th>
+                            <th>PART</th>
+                            <th>DEST</th>
+                            <th>CHEG</th>
+                            <th>PART REAL</th>
+                            <th>STATUS DE PARTIDA</th>
+                            <th>CHEG REAL</th>
+                            <th>STATUS DE CHEGADA</th>
+                            <th>OBSERVAÇÕES</th>
+                            <th>AÇÕES</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody-trens">
+                        <!-- Linhas serão adicionadas dinamicamente -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="table-actions">
+                <button id="btn-adicionar-trem" class="btn btn-primary">Adicionar Trem</button>
+                <button id="btn-limpar-dados" class="btn btn-secondary">Limpar Dados</button>
+            </div>
+        </section>
+
+        <!-- Gráficos e Estatísticas -->
+        <section class="graficos">
+            <div class="graficos-container">
+                <div class="grafico-item">
+                    <h3>Status de Circulação</h3>
+                    <canvas id="grafico-status" width="300" height="200"></canvas>
+                </div>
+                
+                <div class="estatisticas">
+                    <h3>Resumo</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item atrasado">
+                            <span class="stat-number" id="stat-atrasado">0</span>
+                            <span class="stat-label">ATRASADO</span>
+                        </div>
+                        <div class="stat-item ontime">
+                            <span class="stat-number" id="stat-ontime">0</span>
+                            <span class="stat-label">ONTIME</span>
+                        </div>
+                        <div class="stat-item para-circular">
+                            <span class="stat-number" id="stat-para-circular">0</span>
+                            <span class="stat-label">PARA CIRCULAR</span>
+                        </div>
+                        <div class="stat-item circulando">
+                            <span class="stat-number" id="stat-circulando">0</span>
+                            <span class="stat-label">CIRCULANDO</span>
+                        </div>
+                        <div class="stat-item extra">
+                            <span class="stat-number" id="stat-extra">0</span>
+                            <span class="stat-label">EXTRA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ações de Exportação -->
+        <section class="exportacao">
+            <div class="export-actions">
+                <button id="btn-gerar-pdf" class="btn btn-success">Gerar PDF</button>
+                <button id="btn-gerar-imagem" class="btn btn-info">Gerar Imagem</button>
+                <button id="btn-salvar-dados" class="btn btn-warning">Salvar Dados</button>
+            </div>
+        </section>
+
+        <!-- Loading Overlay -->
+        <div id="loading-overlay" class="loading-overlay" style="display: none;">
+            <div class="loading-spinner"></div>
+            <p>Processando...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
