@@ -5,27 +5,17 @@
       "src": "api/index.py",
       "use": "@vercel/python",
       "config": { "maxLambdaSize": "15mb" }
-    },
-    {
-      "src": "src/static/**",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "src/static"
-      }
     }
   ],
   "routes": [
     {
       "src": "/static/(.*)",
-      "dest": "/src/static/$1"
+      "dest": "src/static/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "/api/index.py"
+      "dest": "api/index.py"
     }
   ],
-  "installCommand": "pip install -r requirements.txt",
-     "buildCommand": "python -c \"import os, shutil; os.makedirs(\\'src/static\\', exist_ok=True); shutil.copytree(\\'src/static\\', \\\'src/static\\', dirs_exist_ok=True)\""
-
-
+  "installCommand": "pip install -r requirements.txt"
 }
